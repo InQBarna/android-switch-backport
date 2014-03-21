@@ -29,5 +29,6 @@
     <dimen name="preference_item_padding_inner">8dip</dimen>
     <dimen name="preference_icon_minWidth">0dp</dimen>
     <dimen name="preference_widget_width">48dp</dimen>
+    <dimen name="preference_thumb_width">28dp</dimen>
 
 </resources>

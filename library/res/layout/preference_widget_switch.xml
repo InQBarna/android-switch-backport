@@ -25,5 +25,5 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:focusable="false"
-    android:padding="16dip" />
+    android:padding="0dip" />
 

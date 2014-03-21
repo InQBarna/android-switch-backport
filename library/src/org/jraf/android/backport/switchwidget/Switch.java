@@ -73,8 +73,8 @@ public class Switch extends CompoundButton {
     private final int mThumbTextPadding;
     private final int mSwitchMinWidth;
     private final int mSwitchPadding;
-    private CharSequence mTextOn;
-    private CharSequence mTextOff;
+    private CharSequence mTextOn = "  ";
+    private CharSequence mTextOff = "  ";
 
     private int mTouchMode;
     private final int mTouchSlop;
@@ -144,8 +144,8 @@ public class Switch extends CompoundButton {
 
         mThumbDrawable = a.getDrawable(R.styleable.Switch_thumb);
         mTrackDrawable = a.getDrawable(R.styleable.Switch_track);
-        mTextOn = a.getText(R.styleable.Switch_textOn);
-        mTextOff = a.getText(R.styleable.Switch_textOff);
+       // mTextOn = a.getText(R.styleable.Switch_textOn);
+        //mTextOff = a.getText(R.styleable.Switch_textOff);
         mThumbTextPadding = a.getDimensionPixelSize(R.styleable.Switch_thumbTextPadding, 0);
         mSwitchMinWidth = a.getDimensionPixelSize(R.styleable.Switch_switchMinWidth, 0);
         mSwitchPadding = a.getDimensionPixelSize(R.styleable.Switch_switchPadding, 0);
@@ -276,7 +276,7 @@ public class Switch extends CompoundButton {
      * Sets the text displayed when the button is in the checked state.
      */
     public void setTextOn(CharSequence textOn) {
-        mTextOn = textOn;
+        mTextOn = "  ";
         requestLayout();
     }
 
@@ -291,7 +291,7 @@ public class Switch extends CompoundButton {
      * Sets the text displayed when the button is not in the checked state.
      */
     public void setTextOff(CharSequence textOff) {
-        mTextOff = textOff;
+        mTextOff = "  ";
         requestLayout();
     }
 
@@ -310,7 +310,7 @@ public class Switch extends CompoundButton {
         final int switchWidth = Math.max(mSwitchMinWidth, maxTextWidth * 2 + mThumbTextPadding * 4 + mTempRect.left + mTempRect.right);
         final int switchHeight = mTrackDrawable.getIntrinsicHeight();
 
-        mThumbWidth = maxTextWidth + mThumbTextPadding * 2;
+        mThumbWidth = (int) getResources().getDimension(R.dimen.preference_thumb_width);
 
         mSwitchWidth = switchWidth;
         mSwitchHeight = switchHeight;
@@ -354,7 +354,7 @@ public class Switch extends CompoundButton {
      * @return true if (x, y) is within the target area of the switch thumb
      */
     private boolean hitThumb(float x, float y) {
-        mThumbDrawable.getPadding(mTempRect);
+        //mThumbDrawable.getPadding(mTempRect);
         final int thumbTop = mSwitchTop - mTouchSlop;
         final int thumbLeft = mSwitchLeft + (int) (mThumbPosition + 0.5f) - mTouchSlop;
         final int thumbRight = thumbLeft + mThumbWidth + mTempRect.left + mTempRect.right + mTouchSlop;
@@ -542,7 +542,7 @@ public class Switch extends CompoundButton {
         final int switchInnerBottom = switchBottom - mTempRect.bottom;
         canvas.clipRect(switchInnerLeft, switchTop, switchInnerRight, switchBottom);
 
-        mThumbDrawable.getPadding(mTempRect);
+        //mThumbDrawable.getPadding(mTempRect);
         final int thumbPos = (int) (mThumbPosition + 0.5f);
         final int thumbLeft = switchInnerLeft - mTempRect.left + thumbPos;
         final int thumbRight = switchInnerLeft + thumbPos + mThumbWidth + mTempRect.right;
